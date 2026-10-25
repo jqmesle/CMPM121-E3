@@ -66,6 +66,24 @@ function buildFace() {
 }
 
 const face = buildFace();
+for (let i = 0; i < 120; i++) {
+  const col = i % 20;
+  const row = Math.floor(i / 20);
+
+  const square = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "rect",
+  );
+
+  square.setAttribute("x", String(30 + col * 7));
+  square.setAttribute("y", String(15 + row * 7));
+  square.setAttribute("width", "6");
+  square.setAttribute("height", "6");
+  square.setAttribute("fill", "#302c29");
+
+  face.append(square);
+}
+
 portrait.append(face);
 
 spin.addEventListener("click", () => {
