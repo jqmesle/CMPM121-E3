@@ -1,3 +1,9 @@
+// @deno-types="./asset-url.d.ts"
+import headUrl from "./assets/head.png?no-inline";
+
+// @deno-types="./asset-url.d.ts"
+import bodyUrl from "./assets/body.png?no-inline";
+
 const portrait = document.querySelector<HTMLDivElement>("#portrait")!;
 const spin = document.querySelector<HTMLButtonElement>("#spin")!;
 
@@ -5,7 +11,7 @@ function buildFace() {
   const face = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   face.setAttribute("viewBox", "0 0 200 200");
   face.setAttribute("role", "img");
-  face.setAttribute("aria-label", "A neutral face");
+  face.setAttribute("aria-label", "A cartoon character with a head and body");
 
   const head = document.createElementNS(
     "http://www.w3.org/2000/svg",
@@ -61,6 +67,32 @@ function buildFace() {
   mouth.setAttribute("stroke-width", "4");
   mouth.setAttribute("stroke-linecap", "round");
   face.append(mouth);
+
+  // head.png - Original artwork created by me using a drawing app.
+  const headImage = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "image",
+  );
+
+  headImage.setAttribute("href", headUrl);
+  headImage.setAttribute("x", "45");
+  headImage.setAttribute("y", "20");
+  headImage.setAttribute("width", "110");
+  headImage.setAttribute("height", "110");
+  face.append(headImage);
+
+  // body.png - Original artwork created by me using a drawing app.
+  const bodyImage = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "image",
+  );
+
+  bodyImage.setAttribute("href", bodyUrl);
+  bodyImage.setAttribute("x", "55");
+  bodyImage.setAttribute("y", "120");
+  bodyImage.setAttribute("width", "90");
+  bodyImage.setAttribute("height", "75");
+  face.append(bodyImage);
 
   return face;
 }
